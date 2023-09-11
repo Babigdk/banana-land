@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/banana-land/static/css/main.9c199356.css",
+    "main.js": "/banana-land/static/js/main.90cee1da.js",
+    "static/media/Email.png": "/banana-land/static/media/Email.a1989695a02701922671.png",
+    "static/media/bananaLogo.png": "/banana-land/static/media/bananaLogo.a25292e9c58d9ffaff4d.png",
+    "index.html": "/banana-land/index.html",
+    "main.9c199356.css.map": "/banana-land/static/css/main.9c199356.css.map",
+    "main.90cee1da.js.map": "/banana-land/static/js/main.90cee1da.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c199356.css",
+    "static/js/main.90cee1da.js"
+  ]
+}
