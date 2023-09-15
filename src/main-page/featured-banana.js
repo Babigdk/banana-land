@@ -10,7 +10,7 @@ const FeaturedBanana = ({ banana }) => {
         <Banana banana={banana} />
       </div>
     );
-  return <div>No featured banana at this time</div>;
+    return <div>No featured banana at this time</div>;
 };
 
 export default FeaturedBanana;

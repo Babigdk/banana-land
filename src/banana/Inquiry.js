@@ -1,109 +1,39 @@
-// import { useState } from "react";
-//
-// const Inquiry = () => {
-//   const [contactInfo, setContactInfo] = useState({
-//     name: "",
-//     email: "",
-//     remarks: "",
-//   });
-//
-//   const onChange = (e) => {
-//     setContactInfo({ ...contactInfo, [e.target.id]: e.target.value });
-//   };
-//
-//   const onSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(contactInfo);
-//     //send
-//   };
+import "./banana.css";
+import { useState } from "react";
+import emailIcon from "./Email.png";
+import Inquiry from "./Inquiry";
 
-  import React, { useState } from "react";
-
-  const Inquiry = () => {
-    const [contactInfo, setContactInfo] = useState({
-      name: "",
-      email: "",
-      remarks: "",
-    });
-
-    const onChange = (e) => {
-      setContactInfo({ ...contactInfo, [e.target.id]: e.target.value });
-    };
-
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      console.log(contactInfo);
-
-      try {
-        // Send the contact information to the server for email sending
-        const response = await fetch("/send-email", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(contactInfo),
-        });
-
-        if (response.ok) {
-          // Reset the form after successful submission
-          setContactInfo({
-            name: "",
-            email: "",
-            remarks: "",
-          });
-          console.log("Email sent successfully.");
-        } else {
-          console.error("Failed to send email.");
-        }
-      } catch (error) {
-        console.error("Error sending email:", error);
-      }
-    };
-
+const Banana = ({ banana }) => {
+  const [inquiryShown, setInquiryShown] = useState(false);
+  const inquiryClick = () => {
+    setInquiryShown(!inquiryShown);
+  };
   return (
-    <form className="mt-2">
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Name"
-          id="name"
-          value={contactInfo.name}
-          onChange={onChange}
-        />
+    <div>
+      <div className="row mt-2">
+        <h5 className="col-md-12">{banana.country}</h5>
       </div>
-      <div className="form-group">
-        <label htmlFor="email">Email address</label>
-        <input
-          type="text"
-          id="email"
-          className="form-control"
-          placeholder="Email"
-          value={contactInfo.email}
-          onChange={onChange}
-        />
+      <div className="row">
+        <h3 className="col-md-12">{banana.address}</h3>
       </div>
-      <div className="form-group">
-        <label htmlFor="remarks">Remarks</label>
-        <input
-          type="text"
-          id="remarks"
-          className="form-control"
-          placeholder="Remarks"
-          value={contactInfo.remarks}
-          onChange={onChange}
-        />
+      <div className="row">
+        <div className="col-md-7">
+          <img src={`/images/${banana.photo}.jpeg`} alt="Banana" />
+        </div>
+        <div className="col-md-5">
+          <p className="price">${banana.price}</p>
+          <p>{banana.description}</p>
+          <img
+            src={emailIcon}
+            height="50"
+            alt="inquiry"
+            onClick={inquiryClick}
+          />
+          {inquiryShown && <Inquiry banana={banana} />}
+        </div>
       </div>
-      <button
-        className="btn btn-primary mt-2"
-        disabled={!contactInfo.name || !contactInfo.email}
-        onClick={onSubmit}
-      >
-        Submit
-      </button>
-    </form>
+    </div>
   );
 };
 
-export default Inquiry;
+export default Banana;

@@ -20,7 +20,7 @@ function App() {
     fetchBananas();
   }, []);
 
-  const featuredBananas = useMemo(() => {
+  const featuredBanana = useMemo(() => {
     if (allBananas.length) {
       const randomIndex = Math.floor(Math.random() * allBananas.length);
       return allBananas[randomIndex];
@@ -43,7 +43,7 @@ function App() {
           </Route>
 
           <Route path="/">
-            <FeaturedBanana banana={featuredBananas} />
+            <FeaturedBanana banana={featuredBanana} />
           </Route>
         </Switch>
       </div>
